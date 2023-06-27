@@ -1,19 +1,24 @@
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-
-<body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
-            <p>
-                chaewon_test <span class="heart">♥️</span> Flask
-            </p>
-            <p class="small">
-                Edit <code>templates/index.html</code> and refresh to see your changes!
-            </p>
-        </header>
-    </div>
-</body>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test 이음동의어</title>
+  </head>
+  <body>
+    <h1>이음동의어</h1>
+    <form method="POST">
+      <label for="input_text">영어 문장 입력 </label>
+      <input type="text" name="input_text" id="input_text">
+      <button type="submit">이음동의어 확인</button>
+    </form>
+    {% if input_text %}
+      <h2>원문:</h2>
+      <p>{{ input_text }}</p>
+      <h2>이음동의어:</h2>
+      <ul>
+        {% for paraphrase in paraphrases %}
+          <li>{{ paraphrase }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </body>
 </html>
